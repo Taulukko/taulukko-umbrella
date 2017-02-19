@@ -1,0 +1,8 @@
+HTML Import é a tecnologia que permite importar não somente css e js para uma página html, mas outra página html.
+
+async no final permite fazer não bloqueante (ele efetua os downloads e executa os seguintes antes de terminar este)
+
+IMPORTANTE : aparentemente funciona, somente com o chrome e as últimas versões do opera.
+
+
+Recomendável utilizar polyfill, no exemplo funcionou bem com polimmer do google.

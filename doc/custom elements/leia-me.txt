@@ -1,0 +1,2 @@
+ 
+Custom elements , são elementos personalizados para criar um visual elegante do site utilizando-se elementos que internalizam comportamentos e propriedades sem expor pra fora e desta forma deixando organizado o site.

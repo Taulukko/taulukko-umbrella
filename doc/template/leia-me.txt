@@ -1,0 +1,7 @@
+ 
+
+Templates são blocos que serão utilizados no código mas não de cara, antigamente era criado um div e colocado com display none, hoje não é mais necessário, pode-se fazer um template.
+
+Suporte: Todos os navegadores recentes.
+
+

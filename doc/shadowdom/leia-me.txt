@@ -1,0 +1,7 @@
+ 
+
+Shadow DOM: Ele gera um sandbox onde dentro dele, ninguém enxerga e vice versa. Repare no exemplo os isolamentos, testando tanto css quanto js.
+
+Suporte: Todos os navegadores recentes exceto Edge. Com polyfill todos os navegadores.
+
+Observações: Apesar de conteúdo e aparência rodarem no shadow dom, javascript não por questões de segurança. Para tal, ver CUSTOM ELEMENTS

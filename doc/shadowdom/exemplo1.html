@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+
+<html>
+<head>
+<SCRIPT>
+	//PARTE EXTERNA DO COMPONENTE
+
+
+//simula o seletor do jquery
+function $ (a,b,c,d,e,f,g,h)
+{ 
+	 return document.querySelector(a,b,c,d,e,f,g,h);
+}
+
+function onActive()
+{ 
+	var tpl = $('#example1');
+	tpl.content.querySelector('.subtitle').textContent = "Imaginável !!!";
+	//var clone = document.importNode(tpl.content, true);
+ 
+
+	
+ 	var host = document.querySelector('#container');
+  	var root = host.createShadowRoot();
+  	root.innerHTML = tpl.innerHTML;
+
+}
+
+function setCookie(name, value, exdays,path) {
+
+if(!path)
+{
+	path="/";
+}
+var expires;
+
+var date; 
+ 
+date = new Date(); //  criando o COOKIE com a data atual
+date.setTime(date.getTime()+(exdays*24*60*60*1000));
+expires = date.toUTCString();
+ 
+document.cookie = name+"="+value+"; expires="+expires+"; path="+path;
+ 
+}
+
+function getCookie(name) {
+    var cookies = document.cookie;
+    var prefix = name + "=";
+    var begin = cookies.indexOf("; " + prefix);
+ 
+    if (begin == -1) {
+ 
+        begin = cookies.indexOf(prefix);
+         
+        if (begin != 0) {
+            return null;
+        }
+ 
+    } else {
+        begin += 2;
+    }
+ 
+    var end = cookies.indexOf(";", begin);
+     
+    if (end == -1) {
+        end = cookies.length;                        
+    }
+ 
+    return unescape(cookies.substring(begin + prefix.length, end));
+}
+
+
+function deleteCookie(name) {
+       if (getCookie(name)) {
+              document.cookie = name + "=" +
+              "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+       }
+}
+
+
+ 	console.debug("start");
+	console.debug("escrevendo cookie nome, valor Heisenberg,duration 2017");
+				    setCookie("nome","Heisenberg",33,"file:///Users/gandbranco/Desktop/web-component/shadowdom/exemplo1.html");
+	setCookie("idade","15",33);
+	console.debug(getCookie("nome")+ "-"+ getCookie("idade"));
+	console.debug( document.cookie);
+
+	
+	
+	var x=2;
+
+</SCRIPT>
+
+<style>
+	p{
+		font-size:22px;
+	}	
+</style>
+
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+
+<template id="example1">
+
+<SCRIPT>
+	//PARTE INTERNA DO COMPONENTE
+ 	console.debug("este texto não vai aparecer, pois  templates não executam javascripts");
+	alert('também não vai aparecer');
+    var x = getElementById("output");
+    x.innerHTML="também não vai aparecer";
+    x.innerHTML = document.cookie+"<==muito menos isso";
+</SCRIPT>
+
+  <style>
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    
+	p
+	{
+		color:red;
+		font-weight:bold;
+	}
+
+    #slider {
+      max-width: 600px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    
+    #overflow {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    #slides .inner {
+      width: 400%;
+    }
+    
+    #slides .inner {
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+    
+      -webkit-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      -moz-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      -o-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      -ms-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    
+      -webkit-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      -moz-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      -o-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      -ms-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    }
+    
+    #slides img {
+      width: 25%;
+      float: left;
+    }
+    
+    #slide1:checked ~ #slides .inner {
+      margin-left: 0;
+    }
+    
+    #slide2:checked ~ #slides .inner {
+      margin-left: -100%;
+    }
+    
+    #slide3:checked ~ #slides .inner {
+      margin-left: -200%;
+    }
+    
+    #slide4:checked ~ #slides .inner {
+      margin-left: -300%;
+    }
+    
+    input[type="radio"] {
+      display: none;
+    }
+    
+    label {
+      background: #CCC;
+      display: inline-block;
+      cursor: pointer;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+    }
+    
+    #slide1:checked ~ label[for="slide1"],
+    #slide2:checked ~ label[for="slide2"],
+    #slide3:checked ~ label[for="slide3"],
+    #slide4:checked ~ label[for="slide4"] {
+      background: #333;
+    }
+  </style>
+  <div id="slider" class="content">
+	 <div id="output">output</div>
+
+    <input checked="" type="radio" name="slider" id="slide1" selected="false">
+    <input type="radio" name="slider" id="slide2" selected="false">
+    <input type="radio" name="slider" id="slide3" selected="false">
+    <input type="radio" name="slider" id="slide4" selected="false">
+    <div id="slides">
+      <div id="overflow">
+        <div class="inner">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/5689/rock.jpg">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/5689/grooves.jpg">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/5689/arch.jpg">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/5689/sunset.jpg">
+        </div> <!-- .inner -->
+      </div> <!-- #overflow -->
+    </div>
+    <label for="slide1"></label>
+    <label for="slide2"></label>
+    <label for="slide3"></label>
+    <label for="slide4"></label>
+	<p class="subtitle">A wonderfull example</P>
+  </div>
+</template>
+
+<!-- This message is just for the result tab -->
+<p>Nothing to see because &lt;template&gt; is inert</p>
+ 
+<INPUT type="button" value="ACTIVE" id="btnActive" onClick="onActive();"/>
+
+<div id="container"/></DIV>
+
+ 
+</body>
+</html>
