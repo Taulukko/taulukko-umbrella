@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta charset="UTF-8">
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="taulukko-umbrella.js"></script>
+	
+  	<link rel="import" href="lib/t-hw.html">
+	
+	<SCRIPT>
+	function alertar()
+	{
+		alert(document.getElementsByTagName("t-hw")[0].example());
+		
+	}
+	umbrella.ready(alertar);
+	</SCRIPT>
+	 
+	<title>Title of the document</title>
+</head>
+<body> 
+PC Umbrella
+<h2>Hello world</h2>   
+<t-hw importante="true" show="show" testBinding="(Exemplo de Binding)" testWidth="500px">Hello World</t-hw>
+</body>
+</html>

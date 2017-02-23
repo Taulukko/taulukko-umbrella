@@ -1,4 +1,4 @@
-<element name="hello-world">
+<element name="t-hello-world">
     <template>
         <style>
             :host {
@@ -9,6 +9,7 @@
 
             :host([show]) {
                 display: block;
+                text-decoration: underline;
             }
  
   			:host([importante=true]) .hello-world-inner {
@@ -33,25 +34,31 @@
         </div>
     </template>
     <script>
-  
-            umbrella.register({
-                spacing: 0,
-                defaultPosition: 'bottom',
+    umbrella.register({
+        spacing: 0,
+        defaultPosition: 'bottom',
 
-                
-                get isImportante() {
-                    return this.hasAttribute('importante') && this.getAttribute('importante').equals("true");
-                },
 
-                show: function() {
-                    this.setAttribute('show', '');
-                    this.applyPlacement();
-                },
+        get isImportante() {
+            return this.hasAttribute('importante') && this.getAttribute('importante').equals("true");
+        },
 
-                hide: function() {
-                    this.removeAttribute('show');
-                },
- 
-            }); 
+
+        example: function() {
+            return "example";
+        },
+
+        show: function() {
+            this.setAttribute('show', '');
+            this.applyPlacement();
+        },
+
+        hide: function() {
+            this.removeAttribute('show');
+        },
+
+    });  
+    	
+    
     </script>
 </element>

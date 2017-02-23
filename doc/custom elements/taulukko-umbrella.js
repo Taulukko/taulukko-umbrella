@@ -4,8 +4,8 @@ function loadDynJS(file) {
 		var script = document.createElement("script");
 		script.type = "text/javascript";
 		script.src = file;
-		script.async=false;
-		//script.defer=false; 
+		script.setAttribute("async","false");
+		script.setAttribute("defer","false");
 		document.getElementsByTagName("head")[0].appendChild(script);
 }
 
@@ -33,7 +33,8 @@ var umbrella = function(umbrella,options){
 		{
 			loadDynJS("webcomponents.js");
 			loadDynJS("bosonic-runtime.js");
-			this.register = function(options){ Bosonic.register(options);};
+			this.register = function(options){Bosonic.register(options);};
+			this.ready =  function(func){window.addEventListener("WebComponentsReady", func);};
 		}
 		else
 		{

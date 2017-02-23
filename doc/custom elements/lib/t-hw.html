@@ -1,0 +1,31 @@
+
+<link rel="import" href="b-draggable.html">	
+<link rel="import" href="t-hello-world.html">	
+	
+<element name="t-hw" extends="t-hello-world" >
+    <template>
+        <style>
+          
+  			:host([importante=true]) .hello-world-inner {
+                color: green;
+            }
+            
+           
+        </style> 
+        <div class="hello-world-inner">
+        	<b-draggable show>
+        		Tooltip Test de composição	
+        	</b-draggable>
+            <P>Conteúdo herdado vai sair verde:<content>empty</content></P>
+           
+        </div>
+    </template>
+    <script>
+    umbrella.register({
+        spacing: 0,
+        defaultPosition: 'bottom' 
+    });  
+    	
+    
+    </script>
+</element>
